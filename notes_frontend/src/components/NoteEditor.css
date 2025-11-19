@@ -1,0 +1,276 @@
+.note-editor {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+.editor-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 3rem;
+  text-align: center;
+  color: #6b7280;
+}
+
+.editor-empty-state .empty-icon {
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.6;
+}
+
+.editor-empty-state h2 {
+  font-size: 1.75rem;
+  margin: 0 0 1rem 0;
+  color: #111827;
+}
+
+.editor-empty-state p {
+  font-size: 1rem;
+  margin: 0;
+  max-width: 400px;
+}
+
+.editor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  border-bottom: 2px solid #e5e7eb;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.03) 0%, rgba(249, 250, 251, 0.5) 100%);
+}
+
+.editor-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-save,
+.btn-delete,
+.btn-cancel {
+  padding: 0.65rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-save {
+  background: #e5e7eb;
+  color: #6b7280;
+}
+
+.btn-save.has-changes {
+  background: linear-gradient(135deg, #2563EB 0%, #1e40af 100%);
+  color: white;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+}
+
+.btn-save.has-changes:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.btn-save:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn-delete {
+  background: #fee2e2;
+  color: #EF4444;
+}
+
+.btn-delete:hover {
+  background: #fecaca;
+  transform: translateY(-2px);
+}
+
+.btn-cancel {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.btn-cancel:hover {
+  background: #e5e7eb;
+}
+
+.unsaved-indicator {
+  color: #F59E0B;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.editor-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.note-title-input {
+  width: 100%;
+  padding: 0.75rem 0;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  background: transparent;
+  transition: border-color 0.2s ease;
+  margin-bottom: 1.5rem;
+}
+
+.note-title-input:focus {
+  outline: none;
+  border-bottom-color: #2563EB;
+}
+
+.note-title-input::placeholder {
+  color: #d1d5db;
+}
+
+.note-body-input {
+  flex: 1;
+  width: 100%;
+  padding: 0.5rem 0;
+  border: none;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #374151;
+  background: transparent;
+  resize: none;
+  font-family: inherit;
+}
+
+.note-body-input:focus {
+  outline: none;
+}
+
+.note-body-input::placeholder {
+  color: #d1d5db;
+}
+
+/* Delete confirmation modal */
+.delete-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.delete-modal {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.2s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.delete-modal h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  color: #111827;
+}
+
+.delete-modal p {
+  margin: 0 0 1.5rem 0;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+.btn-modal-cancel,
+.btn-modal-delete {
+  padding: 0.65rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-modal-cancel {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.btn-modal-cancel:hover {
+  background: #e5e7eb;
+}
+
+.btn-modal-delete {
+  background: #EF4444;
+  color: white;
+}
+
+.btn-modal-delete:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+@media (max-width: 768px) {
+  .editor-header {
+    padding: 1rem;
+  }
+
+  .editor-content {
+    padding: 1rem;
+  }
+
+  .note-title-input {
+    font-size: 1.5rem;
+  }
+
+  .note-body-input {
+    font-size: 1rem;
+  }
+}
